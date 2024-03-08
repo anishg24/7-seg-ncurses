@@ -57,24 +57,26 @@ int main (int argc, char *argv[]) {
       printf("Expected dumped value to be in range of 0-15, got %d.\n", digit);
       return 1;
     }
-    // printf("%d", digit);
-    for (int i = 0; i < 8; i++) {
-    // for (int i = 7; i >= 0; i--) {
-      printf("%d ", digit_to_bits[digit][i]);
+    int result = 0;
+    for (int i = 7; i >= 0; i--) {
+      result = (digit_to_bits[digit][i] << i) | result;
     }
-    printf("\n");
+      // printf("%d ", digit_to_bits[digit][i]);
+    printf("%d\n", result);
     return 0;
   }
 
-  if (argc < 8) {
-    printf("Expected %d arguments, found %d.\n", 8, argc);
+  if (argc < 1) {
+    printf("Expected %d arguments, found %d.\n", 0, argc);
     return 1;
   }
 
   int bit_vector[8];
-  for (int i = 1; i < 8; i++) {
-    printf("%d ", argv[i][0] - '0');
-    bit_vector[i-1] = argv[i][0] - '0';
+  int input_vector = std::atoi(argv[1]);
+  printf("%d", input_vector);
+  for (int i = 0; i < 8; i++) {
+    // bit_vector[i-1] = argv[i][0] - '0';
+    bit_vector[i] = (input_vector >> i) & 1;
   }
 
   setlocale(LC_ALL, "");

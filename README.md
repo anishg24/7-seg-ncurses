@@ -1,9 +1,9 @@
 To run, you need to first ensure you have ncurses installed. Then run:
 ```bash
 make
-./renderer c0 c1 c2 c3 c4 c5 c6 c7
+./renderer d0
 ```
-where c0-c7 are your cathode bits (as lined up in the diagram we went over).
+where d0 = c7 c6 c5 c4 c3 c2 c1 c0 are your cathode bits (as lined up in the diagram we went over).
 
 To generate some control bits to verify your results against, you can run:
 ```bash
@@ -15,3 +15,4 @@ You can use this in conjunction with the renderer as:
 ```bash
 ./renderer $(./renderer d <0-15>)
 ```
+to test the ground truth of the renderer
